@@ -18,6 +18,7 @@ function Page() {
     description: "",
     techStack: [],
     githubUrl: "",
+    liveUrl: "",
     thumbnail: null,
   });
 
@@ -47,6 +48,7 @@ function Page() {
       description: "",
       techStack: [],
       githubUrl: "",
+      liveUrl: "",
       thumbnail: null,
     });
     setIsModalOpen(true);
@@ -59,6 +61,7 @@ function Page() {
       description: proj.description,
       techStack: proj.techStack,
       githubUrl: proj.githubUrl,
+      liveUrl: proj.liveUrl || "",
       thumbnail: proj.thumbnail,
     });
     setIsModalOpen(true);
@@ -70,6 +73,7 @@ function Page() {
     data.append("title", formData.title);
     data.append("description", formData.description);
     data.append("githubUrl", formData.githubUrl);
+    data.append("liveUrl", formData.liveUrl);
     formData.techStack.forEach((tech) => {
       data.append("techStack", tech);
     });
@@ -90,6 +94,7 @@ function Page() {
       description: "",
       techStack: [],
       githubUrl: "",
+      liveUrl: "",
       thumbnail: null,
     });
   };
@@ -257,6 +262,15 @@ function Page() {
               value={formData.githubUrl}
               onChange={(e) =>
                 setFormData({ ...formData, githubUrl: e.target.value })
+              }
+              className="w-full border border-gray-300 rounded-lg px-3 py-2"
+            />
+            <input
+              type="url"
+              placeholder="Live URL"
+              value={formData.liveUrl}
+              onChange={(e) =>
+                setFormData({ ...formData, liveUrl: e.target.value })
               }
               className="w-full border border-gray-300 rounded-lg px-3 py-2"
             />

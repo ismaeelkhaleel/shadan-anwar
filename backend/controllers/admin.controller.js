@@ -147,7 +147,7 @@ export const deleteEducation = async (req, res) => {
 export const addProject = async (req, res) => {
   try {
     console.log(req.body);
-    const { title, description, techStack, githubUrl } = req.body;
+    const { title, description, techStack, githubUrl,liveUrl } = req.body;
     if (!title || !description) {
       return res
         .status(400)
@@ -159,6 +159,7 @@ export const addProject = async (req, res) => {
       title,
       description,
       githubUrl,
+      liveUrl,
       thumbnail,
       techStack: Array.isArray(techStack) ? techStack : [techStack],
     });
@@ -177,8 +178,8 @@ export const addProject = async (req, res) => {
 export const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, techStack, githubUrl } = req.body;
-    const updateData = { title, description, githubUrl };
+    const { title, description, techStack, githubUrl, liveUrl } = req.body;
+    const updateData = { title, description, githubUrl, liveUrl };
     updateData.thumbnail = req.file ? req.file.path : "";
     if (techStack && Array.isArray(techStack)) {
       updateData.techStack = techStack;
